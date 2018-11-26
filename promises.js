@@ -14,11 +14,14 @@ const makeAllCaps = (words) => {
     if (!Array.isArray(words)) {
       throw new Error('makeAllCaps was called without an array as its argument.');
     }
-    words.forEach(word => {
+    const newWords = words.map(word => {
       if (typeof word !== 'string') {
         reject('No, the array you passed in contained an element that was not a string!');
+      } else {
+        return word.toUpperCase();
       }
     });
+    resolve(newWords);
   });
   return promise;
 }

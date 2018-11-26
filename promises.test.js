@@ -44,8 +44,23 @@ describe('makeAllCaps', () => {
 
   it('should throw an error if it isn\'t given an array', () => {
     return promises.makeAllCaps()
-      .then(result => new Error('Calling makeAllCaps without a parameter should not yield a result'))
+      .then(result => new Error('Calling makeAllCaps without a parameter should not yield a result.'))
       .catch(error => assert.strictEqual(error.message, 'makeAllCaps was called without an array as its argument.'))
+  });
+
+  it('should throw an error if it is given anything except words', () => {
+    const words = ['turnip', 5, 'parsnip', {}];
+    return promises.makeAllCaps(words)
+      .then(result => new Error('Calling makeAllCaps with a mixed array should not yield a result.'))
+      .catch(error => assert.strictEqual(error, 'No, the array you passed in contained an element that was not a string!'));
+  });
+
+  it('should return the words it is given in upper case', () => {
+    const words = ['turnip', 'rutabaga', 'parsnip', 'raddish'];
+    const expected = ['TURNIP', 'RUTABAGA', 'PARSNIP', 'RADDISH'];
+    return promises.makeAllCaps(words)
+      .then(result => assert.sameOrderedMembers(result, expected))
+      .catch(error => new Error('Calling makeAllCaps with the correct params should not throw an error.'));
   });
 });
 
