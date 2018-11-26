@@ -1,5 +1,5 @@
-var testNum = function () {
-
+const testNum = () => {
+  
 }
 
 module.exports = testNum;
