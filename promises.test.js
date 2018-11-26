@@ -62,6 +62,15 @@ describe('makeAllCaps', () => {
       .then(result => assert.sameOrderedMembers(result, expected))
       .catch(error => new Error('Calling makeAllCaps with the correct params should not throw an error.'));
   });
+
+  it('should be able to work with sortWords', () => {
+    const words = ['turnip', 'rutabaga', 'parsnip', 'raddish'];
+    const expected = ['PARSNIP', 'RADDISH', 'RUTABAGA', 'TURNIP'];
+    return promises.makeAllCaps(words)
+      .then(data => promises.sortWords(data))
+      .then(result => assert.sameOrderedMembers(result, expected))
+      .catch(error => new Error('Something went horribly wrong.'));
+  });
 });
 
 describe('sortWords', () => {
