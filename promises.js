@@ -9,4 +9,6 @@ const testNum = (num) => {
   return promise;
 }
 
-module.exports = testNum;
+module.exports = {
+  testNum
+};

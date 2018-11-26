@@ -1,13 +1,18 @@
 var assert = require('chai').assert;
-var testNum = require('./promises');
+var promises = require('./promises');
 
 describe('testNum', () => {
   it('should be a function', () => {
-    assert.isFunction(testNum);
+    assert.isFunction(promises.testNum);
+  });
+
+  it('should return a promise', () => {
+    const result = promises.testNum().then().catch(error => {});
+    assert.instanceOf(result, Promise);
   });
 
   it('should return \'__ is greater than 10, success!\' if the number is greater than 10', () => {
-    return testNum(15)
+    return promises.testNum(15)
       .then(result => {
         assert.strictEqual(result, '15 is greater than 10, success!');
       })
@@ -17,7 +22,7 @@ describe('testNum', () => {
   });
 
   it('should return \'__ is less than 10, error!\' if the number is less than 10', () => {
-    return testNum(5)
+    return promises.testNum(5)
       .then(result => {
         throw new Error('Entering 5 should throw the other error.');
       })
