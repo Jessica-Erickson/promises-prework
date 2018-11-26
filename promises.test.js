@@ -36,6 +36,17 @@ describe('makeAllCaps', () => {
   it('should be a function', () => {
     assert.isFunction(promises.makeAllCaps)
   });
+
+  it('should return a promise', () => {
+    const result = promises.makeAllCaps().then().catch(error => {});
+    assert.instanceOf(result, Promise);
+  });
+
+  it('should throw an error if it isn\'t given an array', () => {
+    return promises.makeAllCaps()
+      .then(result => new Error('Calling makeAllCaps without a parameter should not yield a result'))
+      .catch(error => assert.strictEqual(error.message, 'makeAllCaps was called without an array as its argument.'))
+  });
 });
 
 describe('sortWords', () => {

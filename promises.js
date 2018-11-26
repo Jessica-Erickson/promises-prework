@@ -9,12 +9,22 @@ const testNum = (num) => {
   return promise;
 }
 
-const makeAllCaps = () => {
-
+const makeAllCaps = (words) => {
+  const promise = new Promise((resolve, reject) => {
+    if (!Array.isArray(words)) {
+      throw new Error('makeAllCaps was called without an array as its argument.');
+    }
+    words.forEach(word => {
+      if (typeof word !== 'string') {
+        reject('No, the array you passed in contained an element that was not a string!');
+      }
+    });
+  });
+  return promise;
 }
 
 const sortWords = () => {
-  
+
 }
 
 module.exports = {
