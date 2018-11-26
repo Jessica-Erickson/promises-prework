@@ -23,8 +23,11 @@ const makeAllCaps = (words) => {
   return promise;
 }
 
-const sortWords = () => {
-
+const sortWords = (words) => {
+  const promise = new Promise((resolve) => {
+    resolve(words.sort());
+  });
+  return promise;
 }
 
 module.exports = {

@@ -53,4 +53,17 @@ describe('sortWords', () => {
   it('should be a function', () => {
     assert.isFunction(promises.sortWords)
   });
+
+  it('should return a promise', () => {
+    const result = promises.sortWords().then().catch(error => {});
+    assert.instanceOf(result, Promise);
+  });
+
+  it('should call .sort() on the words it gets', () => {
+    const words = ['turnip', 'rutabaga', 'parsnip', 'raddish'];
+    const expected = ['parsnip', 'raddish', 'rutabaga', 'turnip'];
+    return promises.sortWords(words)
+      .then(result => assert.sameOrderedMembers(result, expected))
+      .catch();
+  });
 });
