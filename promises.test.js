@@ -15,4 +15,12 @@ describe('testNum', () => {
     const result = await testNum(15);
     assert.strictEqual(result, '15 is greater than 10, success!');
   });
+
+  it('should return \'__ is less than 10, error!\' if the number is less than 10', async () => {
+    try {
+      testNum(5);
+    } catch (error) {
+      assert.strictEqual(error, '5 is less than 10, error!');
+    }
+  });
 });
