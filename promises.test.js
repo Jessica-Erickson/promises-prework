@@ -5,4 +5,9 @@ describe('testNum', () => {
   it('should be a function', () => {
     assert.isFunction(testNum);
   });
+
+  it('should return a promise', () => {
+    let result = testNum();
+    assert.instanceOf(result, Promise);
+  });
 });
