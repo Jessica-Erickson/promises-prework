@@ -31,3 +31,15 @@ describe('testNum', () => {
       });
   });
 });
+
+describe('makeAllCaps', () => {
+  it('should be a function', () => {
+    assert.isFunction(promises.makeAllCaps)
+  });
+});
+
+describe('sortWords', () => {
+  it('should be a function', () => {
+    assert.isFunction(promises.sortWords)
+  });
+});

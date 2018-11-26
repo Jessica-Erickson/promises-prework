@@ -9,6 +9,16 @@ const testNum = (num) => {
   return promise;
 }
 
+const makeAllCaps = () => {
+
+}
+
+const sortWords = () => {
+  
+}
+
 module.exports = {
-  testNum
+  testNum,
+  makeAllCaps,
+  sortWords
 };
